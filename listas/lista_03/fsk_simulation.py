@@ -177,6 +177,9 @@ def plot_simulation_results(
     detected_bits,
     samples_per_bit,
     case_name,
+    sample_rate,
+    frequency_zero,
+    frequency_one,
 ):
     """Plot the main signals involved in the binary FSK simulation.
 
@@ -194,6 +197,13 @@ def plot_simulation_results(
         case_name (str): Descriptive label for the current simulation case.
             This text is used in the plot titles so the reader can distinguish
             the good, moderate, and very difficult channel conditions.
+        sample_rate (float): Sampling frequency in samples per second. This
+            value is used to build the time axis for the reference carrier
+            waves plotted for `f1` and `f2`.
+        frequency_zero (float): Carrier frequency in hertz associated with the
+            first FSK tone, shown in the figure as `f1`.
+        frequency_one (float): Carrier frequency in hertz associated with the
+            second FSK tone, shown in the figure as `f2`.
 
     Returns:
         None: This function only creates and displays a matplotlib figure.
@@ -217,6 +227,9 @@ def plot_simulation_results(
         ...     bits,
         ...     samples_per_bit,
         ...     "Example case",
+        ...     20000,
+        ...     1000,
+        ...     2000,
         ... )
     """
     time_array = np.asarray(time_axis, dtype=float)
@@ -239,12 +252,16 @@ def plot_simulation_results(
 
     transmitted_bits_step = np.repeat(transmitted_bits_array, samples_per_bit)
     detected_bits_step = np.repeat(detected_bits_array, samples_per_bit)
+    reference_time_axis = np.arange(samples_per_bit) / sample_rate
+    reference_zero = np.cos(2 * np.pi * frequency_zero * reference_time_axis)
+    reference_one = np.cos(2 * np.pi * frequency_one * reference_time_axis)
 
     # Show the bit pattern first so the reader can associate every waveform
-    # segment with its corresponding symbol.
-    plt.figure(figsize=(12, 10))
+    # segment with its corresponding symbol. The extra carrier plots show the
+    # two pure oscillations that define the binary FSK alphabet.
+    plt.figure(figsize=(12, 14))
 
-    plt.subplot(4, 1, 1)
+    plt.subplot(6, 1, 1)
     plt.step(time_array, transmitted_bits_step, where="post", color="tab:blue")
     plt.ylim(-0.2, 1.2)
     plt.ylabel("Bit value")
@@ -253,15 +270,31 @@ def plot_simulation_results(
 
     # Plot the clean waveform to highlight how the transmitted frequency
     # changes when the bit value switches between 0 and 1.
-    plt.subplot(4, 1, 2)
+    plt.subplot(6, 1, 2)
     plt.plot(time_array, transmitted_signal_array, color="tab:green", linewidth=1.2)
     plt.ylabel("Amplitude")
     plt.title(f"{case_name}: Generated FSK signal")
     plt.grid(True, alpha=0.3)
 
+    # Plot the first carrier alone so the reader can see the oscillation used
+    # whenever the transmitter sends the symbol associated with f1.
+    plt.subplot(6, 1, 3)
+    plt.plot(reference_time_axis, reference_zero, color="tab:orange", linewidth=1.2)
+    plt.ylabel("Amplitude")
+    plt.title(f"{case_name}: Reference carrier f1 = {frequency_zero} Hz")
+    plt.grid(True, alpha=0.3)
+
+    # Plot the second carrier alone for the same reason, now for the symbol
+    # associated with f2.
+    plt.subplot(6, 1, 4)
+    plt.plot(reference_time_axis, reference_one, color="tab:brown", linewidth=1.2)
+    plt.ylabel("Amplitude")
+    plt.title(f"{case_name}: Reference carrier f2 = {frequency_one} Hz")
+    plt.grid(True, alpha=0.3)
+
     # Plot the noisy waveform so the effect of the channel can be compared
     # directly against the clean transmitted signal.
-    plt.subplot(4, 1, 3)
+    plt.subplot(6, 1, 5)
     plt.plot(time_array, received_signal_array, color="tab:red", linewidth=1.0)
     plt.ylabel("Amplitude")
     plt.title(f"{case_name}: Received signal with AWGN")
@@ -269,7 +302,7 @@ def plot_simulation_results(
 
     # Display the detected sequence last to make the transmission/reception
     # comparison straightforward.
-    plt.subplot(4, 1, 4)
+    plt.subplot(6, 1, 6)
     plt.step(time_array, detected_bits_step, where="post", color="tab:purple")
     plt.ylim(-0.2, 1.2)
     plt.xlabel("Time (s)")
@@ -365,6 +398,9 @@ def run_simulation(case_name, snr_db, seed):
         detected_bits,
         samples_per_bit,
         case_name,
+        sample_rate,
+        frequency_zero,
+        frequency_one,
     )
 
     return {
