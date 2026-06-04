@@ -20,10 +20,10 @@ QUEUE_ORDER = [
 ]
 QUEUE_DISPLAY_LABELS = {
     "mm1_buffer_inteligente_descarte_seletivo": "M/M/1 Inteligente",
-    "mm1_buffer_finito_fcfs": "M/M/1/K FCFS",
-    "mm1_buffer_infinito_fcfs": "M/M/1 inf FCFS",
-    "mg1_buffer_infinito_fcfs": "M/G/1 inf FCFS",
-    "mmm_buffer_infinito_fcfs": "M/M/m inf FCFS",
+    "mm1_buffer_finito_fcfs": "M/M/1/N FCFS",
+    "mm1_buffer_infinito_fcfs": "M/M/1/∞ FCFS",
+    "mg1_buffer_infinito_fcfs": "M/G/1/∞ FCFS",
+    "mmm_buffer_infinito_fcfs": "M/M/m/∞ FCFS",
     "prioridade_sem_preempcao": "Prioridade sem\nPreempção",
 }
 
