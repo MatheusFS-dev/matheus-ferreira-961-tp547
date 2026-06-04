@@ -29,7 +29,31 @@ As demais filas são referências para comparação.
 - `make_plots.py`: geração dos gráficos comparativos.
 - `results/`: saídas CSV, JSON e PNG geradas pelos scripts.
 
+## Requisitos
+
+- Python `3.10` ou superior.
+- `matplotlib` para geração dos gráficos.
+- Os demais módulos usados pelos scripts fazem parte da biblioteca padrão do Python:
+  - `csv`
+  - `json`
+  - `math`
+  - `random`
+  - `heapq`
+  - `pathlib`
+  - `collections`
+  - `dataclasses`
+
+## Instalação
+
+Para instalar a única dependência externa do trabalho:
+
+```bash
+pip install matplotlib
+```
+
 ## Como executar
+
+Para reproduzir os resultados a partir da pasta `trabalho_04`:
 
 ```bash
 python sim_mm1_buffer_inteligente_descarte_seletivo.py
@@ -40,6 +64,8 @@ python sim_mmm_buffer_infinito_fcfs.py
 python sim_prioridade_sem_preempcao.py
 python make_plots.py
 ```
+
+Os scripts de simulação geram arquivos CSV e JSON em `results/`. O script `make_plots.py` lê esses arquivos e atualiza os gráficos em `results/plots/`.
 
 ## Parâmetros principais
 
