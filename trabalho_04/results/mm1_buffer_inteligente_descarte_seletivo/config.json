@@ -1,0 +1,99 @@
+{
+  "queue_name": "Fila M/M/1 com Buffer Inteligente e Descarte Seletivo",
+  "queue_slug": "mm1_buffer_inteligente_descarte_seletivo",
+  "sim_time": 1000.0,
+  "warmup_time": 100.0,
+  "n_replications": 30,
+  "base_seed": 5472026,
+  "scenarios": [
+    {
+      "scenario_id": "base",
+      "lambda_rate": 200.0,
+      "mu_rate": 250.0,
+      "rho": 0.8,
+      "K": 5,
+      "p_high": 0.3
+    },
+    {
+      "scenario_id": "rho_0_50",
+      "lambda_rate": 125.0,
+      "mu_rate": 250.0,
+      "rho": 0.5,
+      "K": 5,
+      "p_high": 0.3
+    },
+    {
+      "scenario_id": "rho_0_70",
+      "lambda_rate": 175.0,
+      "mu_rate": 250.0,
+      "rho": 0.7,
+      "K": 5,
+      "p_high": 0.3
+    },
+    {
+      "scenario_id": "rho_0_90",
+      "lambda_rate": 225.0,
+      "mu_rate": 250.0,
+      "rho": 0.9,
+      "K": 5,
+      "p_high": 0.3
+    },
+    {
+      "scenario_id": "rho_0_95",
+      "lambda_rate": 237.5,
+      "mu_rate": 250.0,
+      "rho": 0.95,
+      "K": 5,
+      "p_high": 0.3
+    },
+    {
+      "scenario_id": "buffer_K_2",
+      "lambda_rate": 200.0,
+      "mu_rate": 250.0,
+      "rho": 0.8,
+      "K": 2,
+      "p_high": 0.3
+    },
+    {
+      "scenario_id": "buffer_K_10",
+      "lambda_rate": 200.0,
+      "mu_rate": 250.0,
+      "rho": 0.8,
+      "K": 10,
+      "p_high": 0.3
+    },
+    {
+      "scenario_id": "buffer_K_20",
+      "lambda_rate": 200.0,
+      "mu_rate": 250.0,
+      "rho": 0.8,
+      "K": 20,
+      "p_high": 0.3
+    },
+    {
+      "scenario_id": "phigh_0_10",
+      "lambda_rate": 200.0,
+      "mu_rate": 250.0,
+      "rho": 0.8,
+      "K": 5,
+      "p_high": 0.1
+    },
+    {
+      "scenario_id": "phigh_0_50",
+      "lambda_rate": 200.0,
+      "mu_rate": 250.0,
+      "rho": 0.8,
+      "K": 5,
+      "p_high": 0.5
+    },
+    {
+      "scenario_id": "phigh_0_80",
+      "lambda_rate": 200.0,
+      "mu_rate": 250.0,
+      "rho": 0.8,
+      "K": 5,
+      "p_high": 0.8
+    }
+  ],
+  "description": "Fila M/M/1 com buffer inteligente, descarte seletivo por prioridade e substituicao do pacote de baixa prioridade mais antigo no buffer."
+}

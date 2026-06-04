@@ -1,0 +1,51 @@
+{
+  "queue_name": "Fila M/M/m/∞/∞/∞/FCFS",
+  "queue_slug": "mmm_buffer_infinito_fcfs",
+  "sim_time": 1000.0,
+  "warmup_time": 100.0,
+  "n_replications": 30,
+  "base_seed": 5472026,
+  "scenarios": [
+    {
+      "scenario_id": "base",
+      "lambda_rate": 200.0,
+      "mu_rate": 250.0,
+      "rho": 0.8,
+      "K": "",
+      "p_high": 0.3
+    },
+    {
+      "scenario_id": "rho_0_50",
+      "lambda_rate": 125.0,
+      "mu_rate": 250.0,
+      "rho": 0.5,
+      "K": "",
+      "p_high": 0.3
+    },
+    {
+      "scenario_id": "rho_0_70",
+      "lambda_rate": 175.0,
+      "mu_rate": 250.0,
+      "rho": 0.7,
+      "K": "",
+      "p_high": 0.3
+    },
+    {
+      "scenario_id": "rho_0_90",
+      "lambda_rate": 225.0,
+      "mu_rate": 250.0,
+      "rho": 0.9,
+      "K": "",
+      "p_high": 0.3
+    },
+    {
+      "scenario_id": "rho_0_95",
+      "lambda_rate": 237.5,
+      "mu_rate": 250.0,
+      "rho": 0.95,
+      "K": "",
+      "p_high": 0.3
+    }
+  ],
+  "description": "Fila M/M/m com dois servidores, buffer infinito, chegadas Poisson, servico exponencial e disciplina FCFS."
+}
