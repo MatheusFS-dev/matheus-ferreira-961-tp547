@@ -9,6 +9,17 @@ Implementar simulações discretas orientadas a eventos para comparar uma fila p
 A fila principal é a Fila M/M/1 com Buffer Inteligente e Descarte Seletivo.
 As demais filas são referências para comparação.
 
+## Funcionamento do buffer inteligente
+
+A fila principal usa uma regra especial quando o buffer está cheio.
+
+- Se chega um pacote de baixa prioridade, ele é descartado.
+- Se chega um pacote de alta prioridade, o sistema procura o pacote de baixa prioridade mais antigo na fila.
+- Se esse pacote existir, ele é substituído pelo pacote de alta prioridade.
+- Se não existir pacote de baixa prioridade na fila, o pacote de alta prioridade também é descartado.
+
+A prioridade não muda diretamente a ordem de atendimento do servidor. Ela atua na decisão de descarte e substituição dentro do buffer.
+
 ## Filas de comparação
 
 - Fila M/M/1/J/J+1/∞/FCFS
@@ -134,6 +145,14 @@ O script `make_plots.py` grava os PNGs em `results/plots/`.
 - M/M/1 finita: comparar a probabilidade de bloqueio do cenário base com a fórmula teórica do material.
 - Fila principal: verificar invariantes de fila, contagens por classe e substituição apenas no buffer.
 - Todos os scripts: checar consistência aproximada com a Lei de Little.
+
+## Escopo da simulação
+
+A simulação usa hipóteses controladas para permitir comparação direta entre os modelos de fila.
+
+Foram consideradas duas classes de prioridade, chegadas Poisson, atendimento exponencial no cenário principal e pacotes tratados de forma equivalente quanto ao tamanho.
+
+Essas escolhas ajudam a isolar o efeito da política de descarte seletivo e concentram a análise no comportamento do buffer inteligente.
 
 ## Interpretação esperada
 
