@@ -23,5 +23,13 @@ This project is licensed under the **[General Public License](LICENSE)**.
         </sub>
       </a>
     </td>
+    <td align="center">
+      <a href="https://github.com/EduCR03" title="Eduardo Costa Resende">
+        <img src="https://github.com/EduCR03.png" width="100px;" alt="Foto do Eduardo Costa Resende no GitHub"/><br>
+        <sub>
+          <b>Eduardo Costa Resende</b>
+        </sub>
+      </a>
+    </td>
   </tr>
 </table>
