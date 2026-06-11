@@ -4,6 +4,8 @@
 
 Implementar simulações discretas orientadas a eventos para comparar uma fila principal com descarte seletivo contra filas clássicas de referência usadas em redes e teoria de filas.
 
+Link para o vídeo de apresentação: https://www.youtube.com/watch?v=WERMM7iGdHs
+
 ## Fila principal do exercício
 
 A fila principal é a Fila M/M/1 com Buffer Inteligente e Descarte Seletivo.
